@@ -1,7 +1,8 @@
 resource "aws_iam_role" "clients_admin" {
-  count              = "${length(var.clients)}"
-  name               = "client-${var.clients[count.index]}-admin"
-  assume_role_policy = "${data.aws_iam_policy_document.gsuite.json}"
+  count                = "${length(var.clients)}"
+  name                 = "client-${var.clients[count.index]}-admin"
+  assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy" "clients_admin_assume" {

@@ -11,3 +11,8 @@ variable "clients" {
   description = "List of clients (external accounts) that this IDP account will allow switching to"
   default     = []
 }
+
+variable "role_max_session_duration" {
+  description = "Maximum CLI/API session duration"
+  default     = "43200"
+}

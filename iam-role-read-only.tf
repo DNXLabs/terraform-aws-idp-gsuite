@@ -1,6 +1,7 @@
 resource "aws_iam_role" "read_only" {
-  name               = "${var.org_name}-read-only"
-  assume_role_policy = "${data.aws_iam_policy_document.gsuite.json}"
+  name                 = "${var.org_name}-read-only"
+  assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy" "read_only_assume" {

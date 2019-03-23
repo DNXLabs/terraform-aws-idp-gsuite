@@ -1,6 +1,7 @@
 resource "aws_iam_role" "admin" {
-  name               = "${var.org_name}-admin"
-  assume_role_policy = "${data.aws_iam_policy_document.gsuite.json}"
+  name                 = "${var.org_name}-admin"
+  assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
+  max_session_duration = "${var.role_max_session_duration}"
 }
 
 resource "aws_iam_role_policy" "admin_assume" {
