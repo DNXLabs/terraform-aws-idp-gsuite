@@ -1,25 +1,6 @@
 resource "aws_iam_role" "read_only" {
-  name = "idp-read-only"
-
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Federated": "arn:aws:iam::${data.aws_caller_identity.current.account_id}:saml-provider/GoogleApps"
-      },
-      "Action": "sts:AssumeRoleWithSAML",
-      "Condition": {
-        "StringEquals": {
-          "SAML:aud": "https://signin.aws.amazon.com/saml"
-        }
-      }
-    }
-  ]
-}
-EOF
+  name               = "${var.org_name}-read-only"
+  assume_role_policy = "${data.aws_iam_policy_document.gsuite.json}"
 }
 
 resource "aws_iam_role_policy" "read_only_assume" {
@@ -35,7 +16,7 @@ resource "aws_iam_role_policy" "read_only_assume" {
                 "sts:AssumeRole"
             ],
             "Resource": [
-                "arn:aws:iam::*:role/idp-read-only"
+                "arn:aws:iam::*:role/${var.org_name}-*-read-only"
             ],
             "Effect": "Allow"
         },
