@@ -6,7 +6,7 @@ This terraform module creates IAM roles federated to GSuite with SAML.
 
 ```hcl
 module "idp_account_roles" {
-  source   = "git::https://github.com/DNXLabs/terraform-aws-idp-gsuite.git?ref=0.0.1"
+  source   = "git::https://github.com/DNXLabs/terraform-aws-idp-gsuite.git?ref=0.0.2"
   org_name = "my_organization"
 }
 ```
