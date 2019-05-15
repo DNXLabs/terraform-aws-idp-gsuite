@@ -30,6 +30,16 @@ resource "aws_iam_role_policy" "admin_assume" {
                 "*"
             ],
             "Effect": "Allow"
+        },
+        {
+            "Action": [
+                "ssm:GetParameter",
+                "ssm:GetParametersByPath"
+            ],
+            "Resource": [
+                "arn:aws:ssm::*:parameter/account/*"
+            ],
+            "Effect": "Allow"
         }
     ]
 }
