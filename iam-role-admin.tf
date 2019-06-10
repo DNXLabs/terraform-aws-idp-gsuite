@@ -4,34 +4,24 @@ resource "aws_iam_role" "admin" {
   max_session_duration = "${var.role_max_session_duration}"
 }
 
-resource "aws_iam_role_policy" "admin_assume" {
-  name = "assume-idp-admin"
-  role = "${aws_iam_role.admin.id}"
+data "aws_iam_policy_document" "admin_policy" {
+  statement {
+    actions   = ["iam:ListAccountAliases"]
+    resources = ["*"]
+  }
 
-  policy = <<EOF
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Action": [
-                "sts:AssumeRole"
-            ],
-            "Resource": [
-                "arn:aws:iam::*:role/${var.org_name}-*-admin",
-                "arn:aws:iam::*:role/terraform-backend"
-            ],
-            "Effect": "Allow"
-        },
-        {
-            "Action": [
-                "iam:ListAccountAliases"
-            ],
-            "Resource": [
-                "*"
-            ],
-            "Effect": "Allow"
-        }
+  statement {
+    actions = ["sts:AssumeRole"]
+
+    resources = [
+      "arn:aws:iam::*:role/${var.org_name}-*-admin",
+      "arn:aws:iam::*:role/terraform-backend",
     ]
+  }
 }
-EOF
+
+resource "aws_iam_role_policy" "admin_assume" {
+  name   = "assume-idp-admin"
+  role   = "${aws_iam_role.admin.id}"
+  policy = "${data.aws_iam_policy_document.admin_policy.json}"
 }

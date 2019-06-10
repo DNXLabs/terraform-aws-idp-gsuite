@@ -1,3 +1,5 @@
+# This role (client-<name>-admin) allows switching just to a specific client
+
 resource "aws_iam_role" "clients_admin" {
   count                = "${length(var.clients)}"
   name                 = "client-${var.clients[count.index]}-admin"
