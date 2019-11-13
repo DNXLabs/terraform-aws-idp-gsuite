@@ -19,8 +19,7 @@ resource "aws_iam_role_policy" "clients_read_only_assume" {
                 "sts:AssumeRole"
             ],
             "Resource": [
-                "arn:aws:iam::*:role/${var.clients[count.index]}-*-read-only",
-                "arn:aws:iam::*:role/${var.clients[count.index]}-read-only"
+                "arn:aws:iam::*:role/${var.org_name}-read-only"
             ],
             "Effect": "Allow"
         },

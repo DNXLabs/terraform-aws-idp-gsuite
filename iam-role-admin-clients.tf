@@ -21,8 +21,7 @@ resource "aws_iam_role_policy" "clients_admin_assume" {
                 "sts:AssumeRole"
             ],
             "Resource": [
-                "arn:aws:iam::*:role/${var.clients[count.index]}-*-admin",
-                "arn:aws:iam::*:role/${var.clients[count.index]}-admin",
+                "arn:aws:iam::*:role/${var.org_name}-admin",
                 "arn:aws:iam::*:role/terraform-backend"
             ],
             "Effect": "Allow"
