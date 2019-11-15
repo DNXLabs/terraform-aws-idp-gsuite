@@ -15,16 +15,7 @@ data "aws_iam_policy_document" "clients_all_admin_assume_policy" {
   statement {
     actions = ["sts:AssumeRole"]
 
-    resources = ["${concat(
-      list(
-        "arn:aws:iam::*:role/${var.org_name}-admin",
-        "arn:aws:iam::*:role/terraform-backend",
-      ), 
-        formatlist(
-          "arn:aws:iam::*:role/%s", var.client_all_admin_role_names
-        )
-      )
-    }"]
+    resources = ["*"]
   }
 }
 

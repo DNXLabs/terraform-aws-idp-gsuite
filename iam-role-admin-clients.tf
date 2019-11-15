@@ -1,8 +1,8 @@
-# This role (client-<name>-admin) allows switching just to a specific client
+# This role (<name>-admin) allows switching just to a specific client
 
 resource "aws_iam_role" "clients_admin" {
   count                = "${length(var.clients)}"
-  name                 = "client-${var.clients[count.index]}-admin"
+  name                 = "${var.clients[count.index]}-admin"
   assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
   max_session_duration = "${var.role_max_session_duration}"
 }
@@ -21,7 +21,7 @@ resource "aws_iam_role_policy" "clients_admin_assume" {
                 "sts:AssumeRole"
             ],
             "Resource": [
-                "arn:aws:iam::*:role/${var.org_name}-admin",
+                "arn:aws:iam::*:role/${var.clients[count.index]}-*-admin",
                 "arn:aws:iam::*:role/terraform-backend"
             ],
             "Effect": "Allow"

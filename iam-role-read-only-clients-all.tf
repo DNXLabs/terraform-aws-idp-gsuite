@@ -16,9 +16,7 @@ resource "aws_iam_role_policy" "clients_all_read_only_assume" {
             "Action": [
                 "sts:AssumeRole"
             ],
-            "Resource": [
-                "arn:aws:iam::*:role/${var.org_name}-read-only"
-            ],
+            "Resource": "*",
             "Effect": "Allow"
         },
         {
