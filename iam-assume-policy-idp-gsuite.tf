@@ -1,6 +1,6 @@
 data "aws_iam_policy_document" "gsuite" {
-  statement = {
-    principals = {
+  statement {
+    principals {
       type = "Federated"
 
       identifiers = [
@@ -12,7 +12,7 @@ data "aws_iam_policy_document" "gsuite" {
       "sts:AssumeRoleWithSAML",
     ]
 
-    condition = {
+    condition {
       test     = "StringEquals"
       variable = "SAML:aud"
 
