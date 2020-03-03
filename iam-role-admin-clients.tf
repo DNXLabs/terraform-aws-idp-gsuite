@@ -1,16 +1,16 @@
 # This role (<name>-admin) allows switching just to a specific client
 
 resource "aws_iam_role" "clients_admin" {
-  count                = "${length(var.clients)}"
+  count                = length(var.clients)
   name                 = "${var.clients[count.index]}-admin"
-  assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
-  max_session_duration = "${var.role_max_session_duration}"
+  assume_role_policy   = data.aws_iam_policy_document.gsuite.json
+  max_session_duration = var.role_max_session_duration
 }
 
 resource "aws_iam_role_policy" "clients_admin_assume" {
-  count = "${length(var.clients)}"
+  count = length(var.clients)
   name  = "clients-assume-idp-admin-${var.clients[count.index]}"
-  role  = "${aws_iam_role.clients_admin.*.id[count.index]}"
+  role  = aws_iam_role.clients_admin[count.index].id
 
   policy = <<EOF
 {
@@ -38,4 +38,5 @@ resource "aws_iam_role_policy" "clients_admin_assume" {
     ]
 }
 EOF
+
 }
