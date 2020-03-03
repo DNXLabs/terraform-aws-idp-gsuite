@@ -1,14 +1,14 @@
 resource "aws_iam_role" "clients_read_only" {
-  count                = "${length(var.clients)}"
+  count                = length(var.clients)
   name                 = "${var.clients[count.index]}-read-only"
-  assume_role_policy   = "${data.aws_iam_policy_document.gsuite.json}"
-  max_session_duration = "${var.role_max_session_duration}"
+  assume_role_policy   = data.aws_iam_policy_document.gsuite.json
+  max_session_duration = var.role_max_session_duration
 }
 
 resource "aws_iam_role_policy" "clients_read_only_assume" {
-  count = "${length(var.clients)}"
+  count = length(var.clients)
   name  = "clients-assume-idp-read-only-${var.clients[count.index]}"
-  role  = "${aws_iam_role.clients_read_only.*.id[count.index]}"
+  role  = aws_iam_role.clients_read_only[count.index].id
 
   policy = <<EOF
 {
@@ -36,4 +36,5 @@ resource "aws_iam_role_policy" "clients_read_only_assume" {
     ]
 }
 EOF
+
 }

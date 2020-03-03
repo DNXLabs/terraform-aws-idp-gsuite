@@ -4,7 +4,7 @@ data "aws_iam_policy_document" "gsuite" {
       type = "Federated"
 
       identifiers = [
-        "${aws_iam_saml_provider.gsuite.arn}",
+        aws_iam_saml_provider.gsuite.arn,
       ]
     }
 
