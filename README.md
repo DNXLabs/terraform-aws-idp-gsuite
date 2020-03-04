@@ -1,5 +1,8 @@
 # terraform-aws-idp-gsuite
 
+[![Lint Status](https://github.com/DNXLabs/terraform-aws-idp-gsuite/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/actions)
+[![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-idp-gsuite)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/blob/master/LICENSE)
+
 This terraform module creates IAM roles federated to GSuite with SAML.
 
 ## Usage
