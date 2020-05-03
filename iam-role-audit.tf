@@ -24,3 +24,13 @@ resource "aws_iam_role_policy" "audit_assume" {
   role   = aws_iam_role.audit.id
   policy = data.aws_iam_policy_document.audit_policy.json
 }
+
+resource "aws_iam_group" "audit" {
+  name = "${var.org_name}-audit"
+}
+
+resource "aws_iam_group_policy" "audit_assume" {
+  name   = "assume-idp-audit-group"
+  group  = aws_iam_group.audit.name
+  policy = data.aws_iam_policy_document.audit_policy.json
+}

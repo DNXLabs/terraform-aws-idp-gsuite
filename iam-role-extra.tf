@@ -29,3 +29,15 @@ resource "aws_iam_role_policy" "extra_assume" {
   role   = aws_iam_role.extra[count.index].id
   policy = data.aws_iam_policy_document.extra_policy[count.index].json
 }
+
+resource "aws_iam_group" "extra" {
+  count = length(var.extra_roles)
+  name  = "${var.org_name}-${var.extra_roles[count.index]}"
+}
+
+resource "aws_iam_group_policy" "extra_assume" {
+  count  = length(var.extra_roles)
+  name   = "assume-idp-${var.extra_roles[count.index]}-group"
+  group  = aws_iam_group.extra[count.index].name
+  policy = data.aws_iam_policy_document.extra_policy[count.index].json
+}

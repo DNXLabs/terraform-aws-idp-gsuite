@@ -24,3 +24,13 @@ resource "aws_iam_role_policy" "billing_assume" {
   role   = aws_iam_role.billing.id
   policy = data.aws_iam_policy_document.billing_policy.json
 }
+
+resource "aws_iam_group" "billing" {
+  name = "${var.org_name}-billing"
+}
+
+resource "aws_iam_group_policy" "billing_assume" {
+  name   = "assume-idp-billing-group"
+  group  = aws_iam_group.billing.name
+  policy = data.aws_iam_policy_document.billing_policy.json
+}
