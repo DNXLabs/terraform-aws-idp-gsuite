@@ -16,23 +16,13 @@ module "idp_account_roles" {
 
 Deploy this module to your IdP account.
 
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| org\_name | Name for this organization (slug) | string | n/a | yes |
-
-## Outputs
-
-| Name | Description |
-|------|-------------|
-| iam\_role\_admin\_arn | ARN for admin IAM role |
-| iam\_role\_read\_only\_arn | ARN for read-only IAM role |
+<!--- BEGIN_TF_DOCS --->
+<!--- END_TF_DOCS --->
 
 ## Authors
 
-Module managed by [Allan Denot](https://github.com/adenot).
+Module managed by [DNX Solutions](https://github.com/DNXLabs).
 
 ## License
 
-Apache 2 Licensed. See LICENSE for full details.
+Apache 2 Licensed. See [LICENSE](https://github.com/DNXLabs/terraform-aws-idp-gsuite/blob/master/LICENSE) for full details.
