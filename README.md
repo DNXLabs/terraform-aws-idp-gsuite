@@ -14,7 +14,7 @@ This module:
  - Set Maximum CLIENT/API session duration - The default value is 43200
  - Set Gsuite as an IAM SAML provider 
 
-More Information: 
+More Information: https://dnxlabs.slab.com/public/r6ds6gnh
 
 
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-idp-gsuite/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/actions)
