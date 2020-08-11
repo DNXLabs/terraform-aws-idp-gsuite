@@ -1,9 +1,26 @@
 # terraform-aws-idp-gsuite
 
+Terraform-aws-idp-gsuite is a terraform module for setting up IDP authentication with GSuite SAML.
+Deploy this module to your IdP account.
+
+This module requires:
+ - Terraform Version >=0.12.20
+
+This module:
+
+ - Creates Identity and Access Management (IAM) role for admin,audit and billing users
+ - Creates Read-Only IAM roles
+ - Creates IAM roles federated to GSuite with SAML
+ - Set Maximum CLIENT/API session duration - The default value is 43200
+ - Set Gsuite as an IAM SAML provider 
+
+More Information: 
+
+
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-idp-gsuite/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/actions)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-idp-gsuite)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/blob/master/LICENSE)
 
-This terraform module creates IAM roles federated to GSuite with SAML.
+
 
 ## Usage
 
@@ -14,7 +31,6 @@ module "idp_account_roles" {
 }
 ```
 
-Deploy this module to your IdP account.
 
 <!--- BEGIN_TF_DOCS --->
 
