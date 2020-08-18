@@ -22,7 +22,7 @@ Deploy this module to your IdP account.
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12.20 |
+| terraform | >= 0.12.0 |
 
 ## Providers
 
