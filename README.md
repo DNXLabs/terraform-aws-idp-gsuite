@@ -7,14 +7,13 @@ This terraform module sets up an IDP authentication with GSuite SAML.
 
 Deploy this module to your IdP account.
 
-This module:
+The following resources will be created:
 
  - Creates Identity and Access Management (IAM) role for admin,audit and billing users
  - Creates Read-Only IAM roles
  - Creates IAM roles federated to GSuite with SAML
  - Set Maximum CLIENT/API session duration - The default value is 43200
  - Set Gsuite as an IAM SAML provider
-
 
 ## Usage
 
@@ -24,7 +23,6 @@ module "idp_account_roles" {
   org_name = "my_organization"
 }
 ```
-
 
 <!--- BEGIN_TF_DOCS --->
 
