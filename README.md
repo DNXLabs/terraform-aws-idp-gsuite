@@ -3,9 +3,7 @@
 [![Lint Status](https://github.com/DNXLabs/terraform-aws-idp-gsuite/workflows/Lint/badge.svg)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/actions)
 [![LICENSE](https://img.shields.io/github/license/DNXLabs/terraform-aws-idp-gsuite)](https://github.com/DNXLabs/terraform-aws-idp-gsuite/blob/master/LICENSE)
 
-This terraform module sets up an IDP authentication with GSuite SAML.
-
-Deploy this module to your IdP account.
+This terraform module sets up an IDP authentication with GSuite SAML. Deploy this module to your IdP account.
 
 The following resources will be created:
 
