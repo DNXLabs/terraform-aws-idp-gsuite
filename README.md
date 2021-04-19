@@ -53,6 +53,7 @@ module "idp_account_roles" {
 |------|-------------|
 | iam\_role\_admin\_arn | ARN for admin IAM role |
 | iam\_role\_read\_only\_arn | ARN for read-only IAM role |
+| saml\_provider\_arn | n/a |
 
 <!--- END_TF_DOCS --->
 
